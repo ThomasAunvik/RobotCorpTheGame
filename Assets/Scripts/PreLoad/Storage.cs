@@ -7,14 +7,16 @@ public class Storage : MonoBehaviour
     private static Storage instance;
     public static Storage _instance { get {
             if (instance) return instance;
-            else return new Storage();
+            else return null;
         } }
 
     private void Awake()
     {
-        if (!instance)
-            DontDestroyOnLoad(gameObject);
-        else Destroy(this);
+        if (instance)
+            Destroy(this);
+
+        DontDestroyOnLoad(gameObject);
+        instance = this;
     }
 
     public float coins = 0;

@@ -13,8 +13,11 @@ public class ConveyorBeltRobot : MonoBehaviour
     public bool recievedOil = false;
     public bool GiveItemOil(Item item)
     {
+        if (robot.wantsItem == null) return false;
+
         if (!recievedOil) recievedOil = true;
         else return false;
+
         return robot.wantsItem.id == item.id;
     }
 

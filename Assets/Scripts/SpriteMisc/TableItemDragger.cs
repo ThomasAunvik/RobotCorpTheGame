@@ -42,8 +42,6 @@ public class TableItemDragger : MonoBehaviour
                 isHoldingItem = true;
 
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                Vector2 offset = ray.origin - item.transform.position;
-
                 holdingItem = Instantiate(item.gameObject);
                 holdingItem.transform.position = new Vector3(ray.origin.x, ray.origin.y, 0);
                 holdingItem.GetComponent<TableItem>().item = item.item;
@@ -66,7 +64,7 @@ public class TableItemDragger : MonoBehaviour
             if (robot.GiveItemOil(item))
             {
                 Debug.Log("Gave Robot Oil. (Item: " + item.id + ")");
-                slider.value += 10;
+                slider.value += 5;
             }
             else
             {
